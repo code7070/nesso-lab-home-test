@@ -5,7 +5,7 @@ type Props = ComponentProps<"button"> & {
 };
 
 const basicClassName =
-  "rounded-full border py-3 px-6 transition-all duration-250";
+  "rounded-full border py-3 px-6 flex items-center justify-center transition-all duration-250 active:scale-90 active:duration-150 gap-2.5 group";
 const variantStyles = {
   outline: `${basicClassName} text-black border-primary hover:bg-primary hover:text-white`,
   shade: `${basicClassName} bg-gray-light hover:bg-gray-dark`,
@@ -19,9 +19,7 @@ export default function Button({
   ...props
 }: Props) {
   const baseClassName = variantStyles[variant];
-  const combinedClassName = className
-    ? `${baseClassName} ${className}`
-    : baseClassName;
+  const combinedClassName = `${baseClassName} ${className}`;
 
   return (
     <button
