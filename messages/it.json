@@ -1,0 +1,18 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading..."
+  },
+  "home": {
+    "title": "Home",
+    "description": "Welcome to our landing page"
+  },
+  "navigation": {
+    "home": "Home",
+    "service": "Servizi",
+    "sector": "Settori",
+    "workMethod": "Metodo dilavaro",
+    "whoUs": "Chi siamo",
+    "contact": "Contatti"
+  }
+}

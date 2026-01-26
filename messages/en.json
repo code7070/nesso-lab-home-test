@@ -1,0 +1,18 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading..."
+  },
+  "home": {
+    "title": "Home",
+    "description": "Welcome to our landing page"
+  },
+  "navigation": {
+    "home": "Home",
+    "service": "Service",
+    "sector": "Sector",
+    "workMethod": "Work Method",
+    "whoUs": "Who Us",
+    "contact": "Contact"
+  }
+}
