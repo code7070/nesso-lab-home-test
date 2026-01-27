@@ -10,4 +10,6 @@
 
 6. JPEG pada gambar flat — Bila ada gambar yang flat, tidak memerlukan shape unik atau transparency Saya akan menggunakan format JPEG. Hal ini juga menjadi concern karena JPEG lebih browser-friendly dan support alpha/transparancy dengan ukuran yang lebih kecil.
 
-7.
+7. Color Variables — Penggunaan color variable memungkinkan kita melakukan mapping color dengan lebih mudah dan fleksibel. Dengan cara ini penggunaan ulang warna dapat dengan mudah dipanggil apalagi menggunakan tailwind V4.
+
+8. Following Looks, Not size at all — In some cases with text or copy writing I think we should achive the look same as design as posible. So in some cases I change the padding, margin, spacing, etc. to make it more similar with design looks.

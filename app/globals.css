@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2e2e2e;
 }
 
 @theme inline {
@@ -13,11 +13,14 @@
 
   /* Color Set */
   --color-primary: #0b5ed7;
+  --color-gray-lightest: #f6f6f6;
   --color-gray-lighter: #f1f1f1;
   --color-gray-light: #d9d9d9;
   --color-gray-medium: #c2c2c2;
+  --color-gray-neutral: #8e8e8e;
   --color-gray: #636363;
   --color-gray-darker: #616161;
+  --color-gray-darkest: #48494e;
   --color-gray-dark: #2e2e2e;
   --color-black: #000000;
   --color-white: #ffffff;
