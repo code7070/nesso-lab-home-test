@@ -1,4 +1,4 @@
-const BookingLogo = ({ size = 66 }: { size?: number }) => {
+const BrandBokingLogo = ({ size = 66 }: { size?: number }) => {
   return (
     <svg
       width={size}
@@ -16,4 +16,4 @@ const BookingLogo = ({ size = 66 }: { size?: number }) => {
   );
 };
 
-export { BookingLogo };
+export { BrandBokingLogo };

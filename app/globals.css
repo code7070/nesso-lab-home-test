@@ -119,3 +119,38 @@ body {
 button {
   cursor: pointer;
 }
+
+.hero-cover {
+  /**/
+  background-image: url("/assets/hero-vector.svg");
+  /**/
+  /**/
+  background-size: 65dvh;
+  /**/
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  /**/
+}
+
+@keyframes circum-shown-anim {
+  from {
+    transform: scale(90%);
+    opacity: 0;
+  }
+  to {
+    transform: scale(100%);
+    opacity: 1;
+  }
+}
+
+.circum-shown {
+  opacity: 0;
+  transform: scale(90%);
+  transition: 0.75s;
+  /**/
+  animation: circum-shown-anim 0.75s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s
+    forwards;
+}
+
+/**/

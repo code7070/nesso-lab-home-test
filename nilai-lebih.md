@@ -2,7 +2,7 @@
 
 2. Typography grouping — designnya dibuat cukup bagus dan terstruktur meski secara layer masih kurang rapi. Jadi Saya memutuskan untuk implementasi textnya menjadi beberapa bagian atau class. Mengimplementasikan hal ini dapat membuat bisa menggunakan model text secara fleksibel di banyak tempat dan mudah di manage.
 
-3. Penggunaan SVG — Penggunaan SVG secara raw memiliki keuntungan mengurangi render effort dari browser. Dengan hal ini berarti kita juga menolong user dengan low-resource device tanpa mengorbankan pengalaman penggunaan.
+3. Penggunaan SVG — Penggunaan SVG secara raw memiliki keuntungan mengurangi render effort dari browser. Dengan hal ini berarti kita juga menolong user dengan low-resource device tanpa mengorbankan pengalaman penggunaan. SVG yang digunakan juga Saya modify agar memiliki fill atau strokeColor bervalue 'currentColor'. Hal ini memungkinkan kita melakukan overiding color ke svg nya untuk kondisi tertentu, misalnya hover.
 
 4. WEBP — Saya memutuskan untuk menggunakan WEBP untuk menggantikan beberapa gambar dengan format PNG. Hal ini juga menjadi concern karena WEBP lebih browser-friendly dan support alpha/transparancy dengan ukuran yang lebih kecil.
 
