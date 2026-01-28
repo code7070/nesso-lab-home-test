@@ -38,7 +38,7 @@ export default function HomeTeam() {
   }, []);
 
   return (
-    <section className="bg-gray-lighter">
+    <section id="team" className="bg-gray-lighter">
       <div className="max-w-7xl mx-auto px-4 py-[42px] flex flex-col gap-8 justify-start">
         <HeaderSection title={t("title")} />
         <div className="w-full grid md:grid-cols-2 gap-9">
@@ -47,7 +47,7 @@ export default function HomeTeam() {
               <Image
                 key={i}
                 className={`object-cover size-full grayscale-100  absolute left-0 top-0 transition-all duration-500 ${active === i ? "opacity-100 scale-100 delay-500" : "opacity-0 scale-90"}`}
-                alt="Nesso Lab Logo"
+                alt="Nesso Digitale team members collaborating"
                 src={b.image}
                 fill
               />

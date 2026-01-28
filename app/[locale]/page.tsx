@@ -19,13 +19,13 @@ export default async function Home({ params }: PageProps) {
 
 function HomeContent() {
   return (
-    <div>
+    <main id="main-content">
       <HomeCover />
       <HomeTeam />
       <HomeService />
       <HomeProject />
       <HomeDigital />
       <HomeArticle />
-    </div>
+    </main>
   );
 }

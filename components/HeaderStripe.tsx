@@ -3,7 +3,14 @@
 import { useSeen } from "@/utils/useSeen";
 import { ReactNode, useEffect, useState } from "react";
 
-export default function HeaderStripe({ children }: { children: ReactNode }) {
+type HeadingLevel = "h2" | "h3" | "h4";
+
+interface Props {
+  children: ReactNode;
+  as?: HeadingLevel;
+}
+
+export default function HeaderStripe({ children, as: Tag = "h2" }: Props) {
   const { isSeen, ref } = useSeen<HTMLHeadingElement>({ triggerOnce: true });
   const [firstLineBottom, setFirstLineBottom] = useState<number | null>(null);
 
@@ -26,7 +33,7 @@ export default function HeaderStripe({ children }: { children: ReactNode }) {
   }, [ref]);
 
   return (
-    <h2
+    <Tag
       className="text-2xl sm:text-[1.75rem] md:text-[2.25rem] font-bold max-w-[680px] relative leading-[1.15em]"
       ref={ref}
     >
@@ -36,6 +43,6 @@ export default function HeaderStripe({ children }: { children: ReactNode }) {
         style={{ top: firstLineBottom ? `${firstLineBottom}px` : undefined }}
         className={`bg-primary h-1 md:h-1.5 transition-all duration-500 ${isSeen ? "w-[140px] md:w-[169px] delay-200" : "w-0"} absolute left-0 -translate-y-1 md:-translate-y-2`}
       />
-    </h2>
+    </Tag>
   );
 }

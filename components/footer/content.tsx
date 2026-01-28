@@ -33,32 +33,36 @@ export default function FooterContent() {
             rel="noopener noreferrer"
             href="https://plus.google.com"
             className="text-slate/40 hover:text-slate"
+            aria-label="Visit our Google Plus page"
           >
-            <GooglePlusIcon />
+            <GooglePlusIcon aria-hidden="true" />
           </Link>
           <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://facebook.com"
             className="text-slate/40 hover:text-slate"
+            aria-label="Visit our Facebook page"
           >
-            <FacebookIcon />
+            <FacebookIcon aria-hidden="true" />
           </Link>
           <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://twitter.com"
             className="text-slate/40 hover:text-slate"
+            aria-label="Visit our Twitter page"
           >
-            <TwitterIcon />
+            <TwitterIcon aria-hidden="true" />
           </Link>
           <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://instagram.com"
             className="text-slate/40 hover:text-slate"
+            aria-label="Visit our Instagram page"
           >
-            <InstagramIcon />
+            <InstagramIcon aria-hidden="true" />
           </Link>
         </div>
       </div>

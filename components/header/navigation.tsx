@@ -35,8 +35,8 @@ export default function HeaderNavigation() {
       },
     );
 
-    // Observe semua section berdasarkan ID yang sudah fix
-    const sectionIds = ["home", "service", "sector", "workMethod", "whoUs"];
+    // Observe all sections based on their actual IDs
+    const sectionIds = ["home", "service", "project", "workMethod", "article"];
     sectionIds.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -65,6 +65,9 @@ export default function HeaderNavigation() {
         className="lg:hidden relative z-[60]"
         variant="outline"
         onClick={toggleMenu}
+        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={isMenuOpen}
+        aria-controls="mobile-menu"
       >
         {isMenuOpen ? (
           <svg
@@ -99,6 +102,7 @@ export default function HeaderNavigation() {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-menu"
         className={`fixed inset-0 h-screen bg-white shadow-lg transition-transform duration-300 ease-in-out lg:hidden z-50 ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
@@ -117,7 +121,7 @@ export default function HeaderNavigation() {
           </div>
 
           {/* Navigation Items - Right aligned, staggered */}
-          <nav className="flex-1 flex flex-col justify-center">
+          <nav className="flex-1 flex flex-col justify-center" role="navigation" aria-label="Main navigation">
             <ul className="flex flex-col gap-6 items-end">
               {navigationMap.map((item, index) => {
                 const sectionId = item.url.replace("#", "");
@@ -183,7 +187,7 @@ export default function HeaderNavigation() {
           </div>
         </div>
       </div>
-      <div className="flex items-center py-3 px-[31px] bg-gray-lighter rounded-full hidden lg:block">
+      <nav className="flex items-center py-3 px-[31px] bg-gray-lighter rounded-full hidden lg:block" role="navigation" aria-label="Main navigation">
         <ul className="flex items-center justify-center gap-[54px]">
           {navigationMap.map((item, index) => {
             const sectionId = item.url.replace("#", "");
@@ -213,7 +217,7 @@ export default function HeaderNavigation() {
             );
           })}
         </ul>
-      </div>
+      </nav>
     </>
   );
 }

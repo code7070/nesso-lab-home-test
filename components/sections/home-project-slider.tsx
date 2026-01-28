@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Controller, EffectCards } from "swiper/modules";
+import { Controller, EffectCards, Keyboard, A11y } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import Button from "@/components/button";
 
@@ -45,20 +45,26 @@ export default function HomeProjectSlider() {
         {/* Left Column: Info & Navigation */}
         <div className="order-2 md:order-1 space-y-4 md:space-y-8">
           <Swiper
-            modules={[Controller]}
+            modules={[Controller, Keyboard, A11y]}
             onSwiper={setInfoSwiper}
             controller={{ control: imageSwiper }}
             onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             spaceBetween={50}
             slidesPerView={1}
             allowTouchMove={false}
+            keyboard={{ enabled: true }}
+            a11y={{
+              enabled: true,
+              prevSlideMessage: "Previous project",
+              nextSlideMessage: "Next project",
+            }}
           >
             {projects.map((project, index) => (
               <SwiperSlide key={index}>
                 <div className="space-y-6">
-                  <h2 className="text-center md:text-left text-3xl sm:text-4xl lg:text-5xl font-bold">
+                  <h3 className="text-center md:text-left text-3xl sm:text-4xl lg:text-5xl font-bold">
                     {project.title}
-                  </h2>
+                  </h3>
                   <p className="text-center md:text-left text-lg text-gray-600 leading-relaxed">
                     {project.description}
                   </p>
@@ -78,12 +84,14 @@ export default function HomeProjectSlider() {
                 variant="circle-nav"
                 onClick={() => infoSwiper?.slidePrev()}
                 disabled={activeIndex === 0}
+                aria-label="Previous project"
               >
                 <svg
                   className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -98,12 +106,14 @@ export default function HomeProjectSlider() {
                 variant="circle-nav"
                 onClick={() => infoSwiper?.slideNext()}
                 disabled={activeIndex === projects.length - 1}
+                aria-label="Next project"
               >
                 <svg
                   className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -128,7 +138,7 @@ export default function HomeProjectSlider() {
             }
           `}</style>
           <Swiper
-            modules={[Controller, EffectCards]}
+            modules={[Controller, EffectCards, Keyboard, A11y]}
             onSwiper={setImageSwiper}
             controller={{ control: infoSwiper }}
             effect="cards"
@@ -137,6 +147,12 @@ export default function HomeProjectSlider() {
               slideShadows: true,
               perSlideOffset: 8,
               perSlideRotate: 2,
+            }}
+            keyboard={{ enabled: true }}
+            a11y={{
+              enabled: true,
+              prevSlideMessage: "Previous project",
+              nextSlideMessage: "Next project",
             }}
             className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] h-[350px] sm:h-[420px] lg:h-[500px] project-image-slider"
           >

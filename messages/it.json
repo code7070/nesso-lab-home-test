@@ -1,4 +1,13 @@
 {
+  "metadata": {
+    "siteName": "Nesso Digitale Lab",
+    "title": "Nesso Digitale Lab | Agenzia Digitale & Studio Creativo",
+    "description": "Nesso Digitale Lab e un'agenzia digitale creativa specializzata in sviluppo web, UI/UX design e trasformazione digitale. Aiutiamo i brand a costruire esperienze digitali eccezionali.",
+    "keywords": "agenzia digitale, sviluppo web, UI/UX design, studio creativo, sviluppo software, trasformazione digitale, software personalizzato, team augmentation",
+    "ogTitle": "Nesso Digitale Lab | Agenzia Digitale & Studio Creativo",
+    "ogDescription": "Aiutiamo i brand a costruire esperienze digitali eccezionali attraverso lo sviluppo web, UI/UX design e trasformazione digitale.",
+    "ogImageAlt": "Nesso Digitale Lab - Agenzia Digitale Creativa"
+  },
   "common": {
     "welcome": "Benvenuto",
     "loading": "Caricamento...",

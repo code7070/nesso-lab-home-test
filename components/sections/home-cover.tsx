@@ -28,12 +28,11 @@ export default async function HomeCover() {
       <div className="min-h-[80vh] lg:min-h-[509px] py-24 lg:py-0 w-full flex items-center max-w-7xl px-4 mx-auto">
         <div className="flex flex-col gap-8 lg:gap-[54px] w-full lg:w-2/3">
           <div className="flex flex-col items-start gap-6 lg:gap-8">
-            <h1 className="hidden">Nesso Digitale Lab</h1>
-            <div className="text-[2.7rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.36rem] leading-[1.1]">
+            <h1 className="text-[2.7rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.36rem] leading-[1.1]">
               <span className="font-extrabold">NESSO DIGITALE</span>
               <br />
               <span className="font-light">LAB</span>
-            </div>
+            </h1>
             <div className="hidden md:block w-full sm:w-3/4 lg:w-full h-px bg-gray-light" />
             <Button>
               <div className="font-bold leading-[0.9em]">
@@ -76,7 +75,7 @@ export default async function HomeCover() {
             width={599}
             height={518}
             className="object-contain w-full h-auto circum-shown"
-            alt="circum"
+            alt=""
             src="/assets/circum.webp"
           />
         </div>

@@ -13,6 +13,7 @@ type ModalState = "form" | "loading" | "success";
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
   const t = useTranslations("contactModal");
   const [modalState, setModalState] = useState<ModalState>("form");
 
@@ -21,13 +22,44 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     if (!dialog) return;
 
     if (isOpen) {
+      // Store the currently focused element
+      previousActiveElement.current = document.activeElement as HTMLElement;
       dialog.showModal();
+      // Prevent body scroll
+      document.body.style.overflow = "hidden";
     } else {
       dialog.close();
       // Reset state when modal closes
       setModalState("form");
+      // Restore body scroll
+      document.body.style.overflow = "";
+      // Return focus to the element that opened the modal
+      if (previousActiveElement.current) {
+        previousActiveElement.current.focus();
+      }
     }
   }, [isOpen]);
+
+  // Handle Escape key
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && modalState !== "loading") {
+        e.preventDefault();
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      dialog.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      dialog.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, modalState, onClose]);
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
     const dialog = dialogRef.current;
@@ -66,6 +98,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       ref={dialogRef}
       onClick={handleBackdropClick}
       onClose={handleClose}
+      aria-modal="true"
+      aria-labelledby="modal-title"
       className="backdrop:bg-black/50 backdrop:backdrop-blur-sm bg-transparent p-0 max-w-lg w-full px-4 rounded-3xl fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <div className="bg-white rounded-3xl p-6 md:p-10 relative pop-out-fade">
@@ -98,7 +132,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         {modalState === "form" && (
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
-              <h2 className="text-2xl md:text-3xl text-primary leading-tight tracking-[-0.03em]">
+              <h2 id="modal-title" className="text-2xl md:text-3xl text-primary leading-tight tracking-[-0.03em]">
                 {t("title")}
               </h2>
               <p className="text-sm md:text-base font-light text-gray-dark/60">
@@ -169,13 +203,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
         {/* Loading State */}
         {modalState === "loading" && (
-          <div className="flex flex-col items-center justify-center py-12 gap-6">
+          <div className="flex flex-col items-center justify-center py-12 gap-6" role="status" aria-live="polite">
             <div className="relative w-16 h-16">
               <div className="absolute inset-0 rounded-full border-4 border-gray-light"></div>
               <div className="absolute inset-0 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <p className="text-lg font-medium text-gray-dark">
+              <p id="modal-title" className="text-lg font-medium text-gray-dark">
                 {t("loadingTitle")}
               </p>
               <p className="text-sm font-light text-gray-dark/60">
@@ -187,7 +221,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
         {/* Success State */}
         {modalState === "success" && (
-          <div className="flex flex-col items-center justify-center py-12 gap-6 pop-out-fade">
+          <div className="flex flex-col items-center justify-center py-12 gap-6 pop-out-fade" role="status" aria-live="polite">
             <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
               <svg
                 width="40"
@@ -195,6 +229,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <path
                   d="M5 13L9 17L19 7"
@@ -206,7 +241,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </svg>
             </div>
             <div className="flex flex-col items-center gap-2 text-center">
-              <h2 className="text-2xl md:text-3xl text-primary leading-tight tracking-[-0.03em]">
+              <h2 id="modal-title" className="text-2xl md:text-3xl text-primary leading-tight tracking-[-0.03em]">
                 {t("successTitle")}
               </h2>
               <p className="text-sm md:text-base font-light text-gray-dark/60">

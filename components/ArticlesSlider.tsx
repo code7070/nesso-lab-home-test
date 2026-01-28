@@ -1,6 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, A11y } from "swiper/modules";
 import Image from "next/image";
 
 import "swiper/css";
@@ -23,6 +24,7 @@ interface ArticlesSliderProps {
 export default function ArticlesSlider({ articles }: ArticlesSliderProps) {
   return (
     <Swiper
+      modules={[Keyboard, A11y]}
       spaceBetween={24}
       slidesPerView={1.3}
       breakpoints={{
@@ -35,6 +37,12 @@ export default function ArticlesSlider({ articles }: ArticlesSliderProps) {
       }}
       slidesOffsetBefore={16}
       slidesOffsetAfter={16}
+      keyboard={{ enabled: true }}
+      a11y={{
+        enabled: true,
+        prevSlideMessage: "Previous article",
+        nextSlideMessage: "Next article",
+      }}
       className="w-full"
     >
       {articles.map((article, index) => (

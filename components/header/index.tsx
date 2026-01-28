@@ -19,7 +19,7 @@ export default function Header() {
       className={`transition-all duration-500 z-10 fixed left-0 top-0 ring-0 w-full from-white/5 via-white/10 to-white/5 backdrop-blur-lg ${direction === "up" ? "py-[33px]" : "py-[13px]"}`}
     >
       <div className="flex justify-between items-center w-full max-w-7xl px-4 mx-auto">
-        <Link href="/#home">
+        <Link href="/#home" aria-label="Nesso Digitale - Go to homepage">
           <span className="hidden md:inline">
             <NessoDigitalLogo />
           </span>
