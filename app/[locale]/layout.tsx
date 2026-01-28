@@ -6,6 +6,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/src/i18n/routing";
 import "../globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-primary",
@@ -55,6 +56,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

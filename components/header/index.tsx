@@ -7,6 +7,7 @@ import Button from "../button";
 import { NessoDigitalLogo } from "../icons/nesso-digital-logo";
 import { Link } from "@/src/i18n/navigation";
 import { useScrollDetection } from "@/utils/useScrollDetection";
+import NessoDigitalIcon from "../icons/nesso-digital-icon";
 
 export default function Header() {
   const t = useTranslations("navigation");
@@ -19,7 +20,12 @@ export default function Header() {
     >
       <div className="flex justify-between items-center w-full max-w-7xl px-4 mx-auto">
         <Link href="/#home">
-          <NessoDigitalLogo />
+          <span className="hidden md:inline">
+            <NessoDigitalLogo />
+          </span>
+          <span className="md:hidden">
+            <NessoDigitalIcon />
+          </span>
         </Link>
         <div className="flex items-center gap-4">
           <HeaderNavigation />

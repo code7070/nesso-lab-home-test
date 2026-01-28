@@ -14,9 +14,9 @@ export default function HeaderNavigation() {
   const navigationMap = [
     { name: t("home"), url: "#home" },
     { name: t("service"), url: "#service" },
-    { name: t("sector"), url: "#sector" },
+    { name: t("sector"), url: "#project" },
     { name: t("workMethod"), url: "#workMethod" },
-    { name: t("whoUs"), url: "#whoUs" },
+    { name: t("whoUs"), url: "#article" },
   ];
 
   useEffect(() => {

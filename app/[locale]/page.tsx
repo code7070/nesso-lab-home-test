@@ -5,6 +5,7 @@ import HomeService from "@/sections/home-service";
 import HomeTeam from "@/sections/home-team";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import HomeArticle from "./home-articles";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -27,8 +28,7 @@ function HomeContent() {
       <HomeService />
       <HomeProject />
       <HomeDigital />
-      <h1>{t("title")}</h1>
-      <p>{t("description")}</p>
+      <HomeArticle />
     </div>
   );
 }

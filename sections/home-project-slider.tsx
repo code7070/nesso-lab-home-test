@@ -39,7 +39,7 @@ export default function HomeProjectSlider() {
   ];
 
   return (
-    <div className="w-full flex items-center justify-center p-8">
+    <div className="w-full flex items-center justify-center p-8 overflow-x-hidden md:overflow-x-auto">
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Column: Info & Navigation */}
         <div className="space-y-8">
@@ -124,7 +124,7 @@ export default function HomeProjectSlider() {
         </div>
 
         {/* Right Column: Image Slider with Card Effect */}
-        <div className="relative h-[600px] flex items-center justify-center">
+        <div className="relative h-[550px] md:h-[600px] flex items-center justify-center">
           <style jsx global>{`
             .project-image-slider .swiper-slide {
               opacity: 0.4;
@@ -144,7 +144,7 @@ export default function HomeProjectSlider() {
               perSlideOffset: 8,
               perSlideRotate: 2,
             }}
-            className="w-[400px] h-[500px] project-image-slider"
+            className="w-full max-w-[400px] h-[500px] project-image-slider"
           >
             {projects.map((project, index) => (
               <SwiperSlide key={index}>

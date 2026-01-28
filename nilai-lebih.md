@@ -13,3 +13,6 @@
 7. Color Variables — Penggunaan color variable memungkinkan kita melakukan mapping color dengan lebih mudah dan fleksibel. Dengan cara ini penggunaan ulang warna dapat dengan mudah dipanggil apalagi menggunakan tailwind V4.
 
 8. Following Looks, Not size at all — In some cases with text or copy writing I think we should achive the look same as design as posible. So in some cases I change the padding, margin, spacing, etc. to make it more similar with design looks.
+
+
+9. Brand Concern — We know brand should be shown in landing page, but in my humble opinion we should think about the UI & structure as well. So for mobile version I have two logo model, first with text in desktop and second the connecting-dot icon only.
