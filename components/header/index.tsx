@@ -34,7 +34,9 @@ export default function Header() {
           </div>
         </div>
         <div className="hidden lg:block">
-          <Button className="w-[141px]">{t("contact")}</Button>
+          <Link href="#contact">
+            <Button className="w-[141px]">{t("contact")}</Button>
+          </Link>
         </div>
       </div>
     </header>

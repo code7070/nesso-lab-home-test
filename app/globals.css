@@ -126,16 +126,23 @@ button {
 }
 
 .hero-cover {
-  /**/
   background-image: url("/assets/hero-vector.svg");
-  /**/
-  /**/
-  background-size: 65dvh;
-  /**/
+  /*background-size: 35dvh;*/
   background-position: right bottom;
   background-repeat: no-repeat;
   background-color: #fff;
-  /**/
+}
+
+@media (min-width: 640px) {
+  .hero-cover {
+    background-size: 50dvh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-cover {
+    background-size: 65dvh;
+  }
 }
 
 @keyframes circum-shown-anim {

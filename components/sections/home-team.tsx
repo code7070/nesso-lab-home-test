@@ -2,27 +2,27 @@
 
 import HeaderSection from "@/components/HeaderSection";
 import TeamTextGroup from "@/components/TeamTextGroup";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function HomeTeam() {
+  const t = useTranslations("team");
+
   const briefs = [
     {
-      title: "Due servizi, un solo partner",
-      description:
-        "Sviluppiamo software su misura e forniamo sviluppatori e DevOps on-demand per rafforzare il tuo team.",
+      title: t("briefs.twoServices.title"),
+      description: t("briefs.twoServices.description"),
       image: "/assets/nesso-team_compressed.jpg",
     },
     {
-      title: "Qualità da software house, flessibilità globale",
-      description:
-        "Un approccio ibrido che unisce standard da software house e una rete internazionale di talenti.",
+      title: t("briefs.quality.title"),
+      description: t("briefs.quality.description"),
       image: "/assets/nesso-team-2_compressed.jpg",
     },
     {
-      title: "Focus totale sul tuo business",
-      description:
-        "Un referente locale e un team globale lavorano insieme per trasformare le esigenze in soluzioni.",
+      title: t("briefs.focus.title"),
+      description: t("briefs.focus.description"),
       image: "/assets/nesso-team-3_compressed.jpg",
     },
   ];
@@ -40,9 +40,9 @@ export default function HomeTeam() {
   return (
     <section className="bg-gray-lighter">
       <div className="max-w-7xl mx-auto px-4 py-[42px] flex flex-col gap-8 justify-start">
-        <HeaderSection title="Nesso Digitale" />
+        <HeaderSection title={t("title")} />
         <div className="w-full grid md:grid-cols-2 gap-9">
-          <div className="relative max-h-[316px]">
+          <div className="relative w-full aspect-[4/3] md:aspect-[2/1.5] md:max-h-[316px]">
             {briefs.map((b, i) => (
               <Image
                 key={i}

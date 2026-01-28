@@ -1,26 +1,27 @@
 import HeaderSection from "@/components/HeaderSection";
 import HeaderStripe from "@/components/HeaderStripe";
 import ServiceCard from "@/components/ServiceCard";
+import { getTranslations } from "next-intl/server";
 
-export default function HomeService() {
+export default async function HomeService() {
+  const t = await getTranslations("service");
+
   const services = [
     {
-      title: "Progetti su misura",
-      description:
-        "Progettiamo e sviluppiamo applicazioni web e gestionali personalizzate, costruite sulle reali esigenze del tuo business.",
+      title: t("items.customProjects.title"),
+      description: t("items.customProjects.description"),
     },
     {
-      title: "Team on-demand",
-      description:
-        "Rafforza il tuo team con sviluppatori e DevOps esperti, pronti a integrarsi rapidamente nei tuoi processi.",
+      title: t("items.teamOnDemand.title"),
+      description: t("items.teamOnDemand.description"),
     },
   ];
   return (
     <section id="service" className="bg-white">
       <div className="max-w-7xl px-4 mx-auto py-[140px] flex flex-col gap-20">
         <HeaderSection
-          title="I nostri servizi"
-          description="Questi servizi sono progettati per aiutare i clienti a costruire e far crescere il proprio brand attraverso strategie creative e soluzioni digitali innovative."
+          title={t("title")}
+          description={t("description")}
         />
         <div className="grid md:grid-cols-2 gap-6 max-w-7xl mx-auto">
           {services.map((item, i) => (

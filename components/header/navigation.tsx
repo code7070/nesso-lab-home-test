@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "../button";
 import LanguageSwitcher from "./language-switcher";
+import { NessoDigitalLogo } from "../icons/nesso-digital-logo";
 
 export default function HeaderNavigation() {
   const t = useTranslations("navigation");
@@ -48,11 +49,14 @@ export default function HeaderNavigation() {
 
   const handleNavigationClick = (sectionId: string) => {
     setActiveSection(sectionId);
-    setIsMenuOpen(false); // Close menu on navigation
+    setIsMenuOpen(false);
+    document.body.style.overflow = "";
   };
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    const newState = !isMenuOpen;
+    setIsMenuOpen(newState);
+    document.body.style.overflow = newState ? "hidden" : "";
   };
 
   return (
@@ -95,45 +99,87 @@ export default function HeaderNavigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 left-0 right-0 bottom-0 h-screen bg-white shadow-lg transition-transform duration-300 ease-in-out lg:hidden z-50 ${
+        className={`fixed inset-0 h-screen bg-white shadow-lg transition-transform duration-300 ease-in-out lg:hidden z-50 ${
           isMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="container mx-auto px-4 py-6 h-full flex flex-col justify-center">
-          <ul className="flex flex-col gap-6 items-end">
-            {navigationMap.map((item, index) => {
-              const sectionId = item.url.replace("#", "");
-              const isActive = activeSection === sectionId;
+        <div className="h-full flex flex-col px-6 py-8">
+          {/* Header: Logo */}
+          <div
+            className={`transition-all duration-300 ${
+              isMenuOpen
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-4"
+            }`}
+            style={{ transitionDelay: isMenuOpen ? "100ms" : "0ms" }}
+          >
+            <NessoDigitalLogo />
+          </div>
 
-              return (
-                <li
-                  key={`${item.url}-${index}`}
-                  className="flex items-center gap-1.5"
-                >
-                  <div
-                    className={`h-6 ${isActive ? "w-6" : "w-0"} flex items-center justify-center transition-all`}
-                  >
-                    {isActive && (
-                      <div className="size-1.5 rounded-full bg-black pop-out-bounce" />
-                    )}
-                  </div>
-                  <Link
-                    href={item.url}
-                    onClick={() => handleNavigationClick(sectionId)}
-                    className={`active:scale-95 active:duration-150 font-secondary transition-all ${isActive ? "text-black" : "text-gray"} hover:text-primary font-normal text-lg`}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          {/* Navigation Items - Right aligned, staggered */}
+          <nav className="flex-1 flex flex-col justify-center">
+            <ul className="flex flex-col gap-6 items-end">
+              {navigationMap.map((item, index) => {
+                const sectionId = item.url.replace("#", "");
+                const isActive = activeSection === sectionId;
+                const delay = 150 + index * 50; // Staggered: 150ms, 200ms, 250ms...
 
-          {/* Contact Button and Language Switcher */}
-          <div className="flex flex-col items-end gap-4 mt-8">
-            <Button className="w-[141px]">{t("contact")}</Button>
-            <div className="h-10" />
-            <LanguageSwitcher />
+                return (
+                  <li
+                    key={`${item.url}-${index}`}
+                    className={`flex items-center gap-1.5 transition-all duration-300 ${
+                      isMenuOpen
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 translate-x-8"
+                    }`}
+                    style={{
+                      transitionDelay: isMenuOpen ? `${delay}ms` : "0ms",
+                    }}
+                  >
+                    <div
+                      className={`h-6 ${isActive ? "w-6" : "w-0"} flex items-center justify-center transition-all`}
+                    >
+                      {isActive && (
+                        <div className="size-1.5 rounded-full bg-black pop-out-bounce" />
+                      )}
+                    </div>
+                    <Link
+                      href={item.url}
+                      onClick={() => handleNavigationClick(sectionId)}
+                      className={`active:scale-95 active:duration-150 font-secondary transition-all ${
+                        isActive ? "text-black" : "text-gray"
+                      } hover:text-primary font-normal text-xl`}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Language Switcher - After nav items */}
+            <div
+              className={`flex justify-end mt-8 transition-all duration-300 ${
+                isMenuOpen
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-8"
+              }`}
+              style={{ transitionDelay: isMenuOpen ? "400ms" : "0ms" }}
+            >
+              <LanguageSwitcher />
+            </div>
+          </nav>
+
+          {/* Footer: Contact Button - Full width, prominent */}
+          <div
+            className={`transition-all duration-300 ${
+              isMenuOpen
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
+            }`}
+            style={{ transitionDelay: isMenuOpen ? "450ms" : "0ms" }}
+          >
+            <Button className="w-full justify-center">{t("contact")}</Button>
           </div>
         </div>
       </div>

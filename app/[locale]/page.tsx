@@ -1,11 +1,10 @@
-import HomeCover from "@/sections/home-cover";
-import HomeDigital from "@/sections/home-digital";
-import HomeProject from "@/sections/home-project";
-import HomeService from "@/sections/home-service";
-import HomeTeam from "@/sections/home-team";
-import { useTranslations } from "next-intl";
+import HomeCover from "@/components/sections/home-cover";
+import HomeProject from "@/components/sections/home-project";
+import HomeDigital from "@/components/sections/home-digital";
+import HomeService from "@/components/sections/home-service";
+import HomeTeam from "@/components/sections/home-team";
+import HomeArticle from "@/components/sections/home-articles";
 import { setRequestLocale } from "next-intl/server";
-import HomeArticle from "./home-articles";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -19,8 +18,6 @@ export default async function Home({ params }: PageProps) {
 }
 
 function HomeContent() {
-  const t = useTranslations("home");
-
   return (
     <div>
       <HomeCover />

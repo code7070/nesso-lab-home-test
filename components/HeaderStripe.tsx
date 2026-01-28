@@ -27,14 +27,14 @@ export default function HeaderStripe({ children }: { children: ReactNode }) {
 
   return (
     <h2
-      className="text-[2.25rem] font-bold max-w-[680px] relative leading-[1.15em]"
+      className="text-2xl sm:text-[1.75rem] md:text-[2.25rem] font-bold max-w-[680px] relative leading-[1.15em]"
       ref={ref}
     >
       {children}
       <span
         aria-hidden="true"
         style={{ top: firstLineBottom ? `${firstLineBottom}px` : undefined }}
-        className={`bg-primary h-1.5 transition-all duration-500 ${isSeen ? "w-[169px] delay-200" : "w-0"} absolute left-0 -translate-y-2`}
+        className={`bg-primary h-1 md:h-1.5 transition-all duration-500 ${isSeen ? "w-[140px] md:w-[169px] delay-200" : "w-0"} absolute left-0 -translate-y-1 md:-translate-y-2`}
       />
     </h2>
   );

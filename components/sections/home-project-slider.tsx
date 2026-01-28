@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Controller, EffectCards } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
+import Button from "@/components/button";
 
 // Import Swiper styles
 import "swiper/css";
@@ -39,10 +40,10 @@ export default function HomeProjectSlider() {
   ];
 
   return (
-    <div className="w-full flex items-center justify-center p-8 overflow-x-hidden md:overflow-x-auto">
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div className="w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-x-hidden md:overflow-x-auto">
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left Column: Info & Navigation */}
-        <div className="space-y-8">
+        <div className="order-2 md:order-1 space-y-4 md:space-y-8">
           <Swiper
             modules={[Controller]}
             onSwiper={setInfoSwiper}
@@ -55,11 +56,10 @@ export default function HomeProjectSlider() {
             {projects.map((project, index) => (
               <SwiperSlide key={index}>
                 <div className="space-y-6">
-                  <div className="text-sm uppercase tracking-wider text-gray-500">
-                    {project.name}
-                  </div>
-                  <h2 className="text-5xl font-bold">{project.title}</h2>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <h2 className="text-center md:text-left text-3xl sm:text-4xl lg:text-5xl font-bold">
+                    {project.title}
+                  </h2>
+                  <p className="text-center md:text-left text-lg text-gray-600 leading-relaxed">
                     {project.description}
                   </p>
                 </div>
@@ -67,64 +67,58 @@ export default function HomeProjectSlider() {
             ))}
           </Swiper>
 
-          {/* Custom Navigation */}
-          <div className="flex items-center gap-6">
-            <button
-              onClick={() => infoSwiper?.slidePrev()}
-              className="p-4 rounded-full border-2 border-gray-300 hover:border-black transition-colors disabled:opacity-30"
-              disabled={activeIndex === 0}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
+          {/* Project Name & Navigation */}
+          <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
+            <span className="bg-gray-lighter text-gray rounded-full py-2 px-4 text-sm">
+              {projects[activeIndex].name}
+            </span>
 
-            <div className="flex gap-2">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => infoSwiper?.slideTo(index)}
-                  className={`h-2 rounded-full transition-all ${
-                    index === activeIndex ? "w-12 bg-black" : "w-2 bg-gray-300"
-                  }`}
-                />
-              ))}
+            <div className="flex items-center gap-2">
+              <Button
+                variant="circle-nav"
+                onClick={() => infoSwiper?.slidePrev()}
+                disabled={activeIndex === 0}
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </Button>
+
+              <Button
+                variant="circle-nav"
+                onClick={() => infoSwiper?.slideNext()}
+                disabled={activeIndex === projects.length - 1}
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Button>
             </div>
-
-            <button
-              onClick={() => infoSwiper?.slideNext()}
-              className="p-4 rounded-full border-2 border-gray-300 hover:border-black transition-colors disabled:opacity-30"
-              disabled={activeIndex === projects.length - 1}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
           </div>
         </div>
 
         {/* Right Column: Image Slider with Card Effect */}
-        <div className="relative h-[550px] md:h-[600px] flex items-center justify-center">
+        <div className="order-1 md:order-2 px-8 relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center">
           <style jsx global>{`
             .project-image-slider .swiper-slide {
               opacity: 0.4;
@@ -144,11 +138,11 @@ export default function HomeProjectSlider() {
               perSlideOffset: 8,
               perSlideRotate: 2,
             }}
-            className="w-full max-w-[400px] h-[500px] project-image-slider"
+            className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] h-[350px] sm:h-[420px] lg:h-[500px] project-image-slider"
           >
             {projects.map((project, index) => (
               <SwiperSlide key={index}>
-                <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center text-gray-400 text-xl">
+                <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center text-gray-400 text-sm sm:text-base lg:text-xl">
                   {project.image}
                 </div>
               </SwiperSlide>

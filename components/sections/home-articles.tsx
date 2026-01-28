@@ -1,5 +1,6 @@
 import HeaderSection from "@/components/HeaderSection";
-import Image from "next/image";
+import ArticlesSlider from "@/components/ArticlesSlider";
+import { getTranslations } from "next-intl/server";
 
 interface NewsAPIResponse {
   status: string;
@@ -51,16 +52,14 @@ async function getArticles(): Promise<Article[]> {
 }
 
 export default async function HomeArticle() {
+  const t = await getTranslations("articles");
   const articles = await getArticles();
 
   return (
     <section id="article" className="bg-white py-[60px] md:py-[120px]">
       <div className="max-w-7xl mx-auto px-4 flex flex-col gap-10">
-        <HeaderSection
-          title="La trasformazione digitale, passo dopo passo"
-          description="Esempi pratici di automazione che semplificano le attività operative e migliorano le performance aziendali."
-        />
-        <div className="grid md:grid-cols-3 gap-6">
+        <HeaderSection title={t("title")} description={t("description")} />
+        {/*<div className="grid md:grid-cols-3 gap-6">
           {articles.map((article, index) => (
             <a
               key={index}
@@ -98,6 +97,9 @@ export default async function HomeArticle() {
               </div>
             </a>
           ))}
+        </div>*/}
+        <div className="-mx-4">
+          <ArticlesSlider articles={articles} />
         </div>
       </div>
     </section>

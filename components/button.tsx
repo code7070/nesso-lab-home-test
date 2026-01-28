@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 
 type Props = ComponentProps<"button"> & {
-  variant?: "outline" | "shade" | "icon-round";
+  variant?: "outline" | "shade" | "icon-round" | "circle-nav";
 };
 
 const basicClassName =
@@ -10,6 +10,8 @@ const variantStyles = {
   outline: `${basicClassName} text-black border-primary hover:bg-primary hover:text-white`,
   shade: `${basicClassName} border-transparent text-gray-dark bg-gray-light hover:bg-gray-dark hover:text-gray-light !py-3 !px-[13px]`,
   "icon-round": "text-black border-primary hover:bg-primary hover:text-white",
+  "circle-nav":
+    "w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-250 active:scale-90 active:duration-150 bg-primary text-white border-primary hover:opacity-80 disabled:bg-white disabled:text-gray disabled:border-gray disabled:opacity-100",
 };
 
 export default function Button({

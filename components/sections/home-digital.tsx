@@ -4,24 +4,23 @@ import HeaderSection from "@/components/HeaderSection";
 import HomeDigitalVisual from "./home-digital-visual";
 import { useSeen } from "@/utils/useSeen";
 import DigitalWordingDisplay from "@/components/DigitalWordingDisplay";
+import { useTranslations } from "next-intl";
 
 export default function HomeDigital() {
+  const t = useTranslations("digital");
   const { ref, isSeen } = useSeen({ triggerOnce: true });
   const wordings = {
     integration: {
-      title: "Integrazione sito web e CRM",
-      description:
-        "Sincronizzazione automatica dei lead e tempi di risposta ridotti da ore a pochi minuti.",
+      title: t("wordings.integration.title"),
+      description: t("wordings.integration.description"),
     },
     automation: {
-      title: "Automazione dei report di vendita mensili",
-      description:
-        "Tempo di reporting ridotto del 70%, con un risparmio di circa 40 ore uomo al mese.",
+      title: t("wordings.automation.title"),
+      description: t("wordings.automation.description"),
     },
     software: {
-      title: "Gestionale leggero su misura",
-      description:
-        "Processi centralizzati e attività amministrative quotidiane ridotte del 50%.",
+      title: t("wordings.software.title"),
+      description: t("wordings.software.description"),
     },
   };
   return (
@@ -31,8 +30,8 @@ export default function HomeDigital() {
         ref={ref}
       >
         <HeaderSection
-          title="La trasformazione digitale in azione"
-          description="Dai processi manuali a quelli automatizzati: esempi concreti di come aiutiamo i nostri clienti a semplificare il lavoro quotidiano, ridurre gli errori e ottenere risultati misurabili."
+          title={t("title")}
+          description={t("description")}
         />
         <div className="grid md:grid-cols-[1fr_minmax(0,480px)_1fr] gap-10">
           <div className="order-2 md:order-1 flex flex-col gap-10 md:gap-[72px] justify-center">
